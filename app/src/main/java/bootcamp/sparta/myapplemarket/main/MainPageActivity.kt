@@ -30,7 +30,9 @@ class MainPageActivity : BasePageActivity() {
 
         initView()
         initSpinner()
+        initRecyclerView()
     }
+
 
     private fun initView() {
         spinner = binding.mainSpinner
@@ -49,5 +51,10 @@ class MainPageActivity : BasePageActivity() {
         )
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item)
         spinner.adapter = adapter
+    }
+
+    private fun initRecyclerView() {
+        val adapter = MainPageRecyclerViewAdapter()
+        recyclerview.adapter = adapter
     }
 }
