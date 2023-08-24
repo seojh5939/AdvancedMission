@@ -2,17 +2,22 @@
 <resources>
     <dimen name="layout_item_margin">10dp</dimen>
 
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+
+    <dimen name="thumb_image_size">120dp</dimen>
     <dimen name="image_button_size">30dp</dimen>
 
-    <dimen name="image_size">120dp</dimen>
-    <dimen name="image_margin">8dp</dimen>
+    <dimen name="profile_circle_size">40dp</dimen>
 
-    <dimen name="title_textSize">16sp</dimen>
-    <dimen name="location_textSize">14sp</dimen>
+    <dimen name="title_textSize">17sp</dimen>
+    <dimen name="location_textSize">15sp</dimen>
     <dimen name="price_textSize">18sp</dimen>
     <dimen name="text_margin">8dp</dimen>
 
     <dimen name="icon_size">40dp</dimen>
+    <dimen name="icon_manner_size">35dp</dimen>
     <dimen name="icon_padding">5dp</dimen>
     <dimen name="icon_num_size">11sp</dimen>
 

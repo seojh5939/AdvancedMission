@@ -3,8 +3,10 @@
     <color name="transparent">#00ff0000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="orange">#EC6337</color>
+    <color name="orange">#ec6337</color>
     <color name="deepGreen">#429488</color>
     <color name="lightGray">#9F9D9D</color>
+    <color name="whiteGray">#e0dcdc</color>
     <color name="deepGray">#4c4b4b</color>
+    <color name="transparent_orange">#BEEC6337</color>
 </resources>
