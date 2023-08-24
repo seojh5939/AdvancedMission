@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="image_button_size">30dp</dimen>
     <dimen name="image_margin">8dp</dimen>
     <dimen name="title_textSize">15sp</dimen>
     <dimen name="location_textSize">13sp</dimen>
