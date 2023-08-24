@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="layout_item_margin">10dp</dimen>
+
     <dimen name="image_button_size">30dp</dimen>
+
+    <dimen name="image_size">120dp</dimen>
     <dimen name="image_margin">8dp</dimen>
-    <dimen name="title_textSize">15sp</dimen>
-    <dimen name="location_textSize">13sp</dimen>
+
+    <dimen name="title_textSize">16sp</dimen>
+    <dimen name="location_textSize">14sp</dimen>
     <dimen name="price_textSize">18sp</dimen>
-    <dimen name="margin_text_top">5dp</dimen>
-    <dimen name="icon_size">10dp</dimen>
-    <dimen name="icon_margin">3dp</dimen>
+    <dimen name="text_margin">8dp</dimen>
+
+    <dimen name="icon_size">40dp</dimen>
+    <dimen name="icon_padding">5dp</dimen>
+    <dimen name="icon_num_size">11sp</dimen>
+
 </resources>
