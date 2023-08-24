@@ -2,4 +2,10 @@
     <string name="app_name">MyAppleMarket</string>
     <string name="snakbar_msg">관심목록에 추가되었습니다.</string>
     <string name="detail_manner"><u>메너온도</u></string>
+
+    <string-array name="dummy_spinner_items">
+        <item>내배캠동</item>
+        <item>네이버동</item>
+    </string-array>
+
 </resources>
