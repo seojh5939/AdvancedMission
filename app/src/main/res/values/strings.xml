@@ -8,4 +8,9 @@
         <item>네이버동</item>
     </string-array>
 
+    <string name="exit_dialog_title">종료</string>
+    <string name="exit_dialog_content">정말 종료하시겠습니까?</string>
+    <string name="exit_dialog_positive">확인</string>
+    <string name="exit_dialog_negativie">취소</string>
+
 </resources>
