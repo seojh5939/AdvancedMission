@@ -56,8 +56,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/item_main_icon_chat"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
+        android:layout_width="@dimen/icon_button_width"
+        android:layout_height="@dimen/icon_button_height"
         android:background="@color/transparent"
         android:clickable="false"
         android:drawableStart="@drawable/icon_chat"
@@ -69,8 +69,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/item_main_icon_like"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
+        android:layout_width="@dimen/icon_button_width"
+        android:layout_height="@dimen/icon_button_height"
         android:background="@color/transparent"
         android:drawableStart="@drawable/icon_like"
         android:padding="@dimen/icon_padding"
