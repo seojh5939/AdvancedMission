@@ -5,6 +5,7 @@ import android.content.Intent
 import android.icu.lang.UCharacter.VerticalOrientation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.Spinner
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.myapplemarket.R
 import bootcamp.sparta.myapplemarket.abstract.BasePageActivity
+import bootcamp.sparta.myapplemarket.abstract.dialogButtonClicked
 import bootcamp.sparta.myapplemarket.databinding.MainPageActivityBinding
 
 class MainPageActivity : BasePageActivity() {
@@ -36,6 +38,17 @@ class MainPageActivity : BasePageActivity() {
         initRecyclerView()
     }
 
+    // Main화면에서 Back Button 클릭시 처리
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        val positive = object : dialogButtonClicked {
+            override fun onPositiveButtonClick() {
+                finish()
+            }
+        }
+
+        exitDialog(positive)
+    }
 
     private fun initView() {
         spinner = binding.mainSpinner
