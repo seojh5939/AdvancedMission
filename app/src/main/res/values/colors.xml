@@ -9,4 +9,5 @@
     <color name="whiteGray">#e0dcdc</color>
     <color name="deepGray">#4c4b4b</color>
     <color name="transparent_orange">#BEEC6337</color>
+    <color name="dialog_button_bg_red">#B91C1C</color>
 </resources>
