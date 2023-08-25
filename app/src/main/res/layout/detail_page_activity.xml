@@ -154,20 +154,22 @@
 
     <ImageButton
         android:id="@+id/detail_like"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="@dimen/margin_20"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="10dp"
         android:background="@color/transparent"
         android:scaleType="centerCrop"
         android:src="@drawable/icon_like"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="like버튼" />
 
     <View
         android:id="@+id/detail_bottom_vertical_line"
         android:layout_width="1dp"
         android:layout_height="40dp"
-        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginStart="@dimen/margin_8"
         android:background="@color/whiteGray"
         app:layout_constraintBottom_toBottomOf="@+id/detail_like"
         app:layout_constraintStart_toEndOf="@+id/detail_like"
@@ -188,7 +190,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/detail_button_chat"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="@dimen/margin_20"
         android:background="@drawable/rounded_button"
         android:text="채팅하기"
