@@ -11,7 +11,7 @@
         android:layout_width="@dimen/thumb_image_size"
         android:layout_height="@dimen/thumb_image_size"
         android:scaleType="centerCrop"
-        android:background="@drawable/rv_tiem_image_border"
+        android:background="@drawable/rv_item_image_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@color/black" />
