@@ -74,7 +74,7 @@ class DetailPageActivity : BasePageActivity() {
             ivImage.setImageResource(it.image)
             tvUserId.text = it.user
             tvLocation.text = it.location
-            tvPrice.text = setComma(it.price)
+            tvPrice.text = setComma(it.price) + "원"
             tvBoardTitle.text = it.title
             tvBoardContents.text = it.description
         }
