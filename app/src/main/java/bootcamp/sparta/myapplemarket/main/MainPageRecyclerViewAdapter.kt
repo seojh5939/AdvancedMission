@@ -50,7 +50,7 @@ class MainPageRecyclerViewAdapter : RecyclerView.Adapter<MainPageRecyclerViewAda
             image.setImageResource(data.image)
             title.text = data.title
             location.text = data.location
-            price.text = setComma(data.price)
+            price.text = setComma(data.price) +"원"
             chat.text = data.chat
             like.text = data.like.toString()
         }
