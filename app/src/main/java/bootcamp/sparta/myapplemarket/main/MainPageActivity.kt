@@ -2,11 +2,14 @@ package bootcamp.sparta.myapplemarket.main
 
 import android.content.Context
 import android.content.Intent
+import android.icu.lang.UCharacter.VerticalOrientation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.Spinner
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.myapplemarket.R
 import bootcamp.sparta.myapplemarket.abstract.BasePageActivity
@@ -55,6 +58,8 @@ class MainPageActivity : BasePageActivity() {
 
     private fun initRecyclerView() {
         val adapter = MainPageRecyclerViewAdapter()
+        val divider = DividerItemDecoration(this, VERTICAL)
+        recyclerview.addItemDecoration(divider)
         recyclerview.adapter = adapter
     }
 }
