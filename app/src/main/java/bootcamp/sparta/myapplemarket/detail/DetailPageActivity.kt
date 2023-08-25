@@ -3,14 +3,13 @@ package bootcamp.sparta.myapplemarket.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import android.R.*
 import bootcamp.sparta.myapplemarket.R
 import bootcamp.sparta.myapplemarket.abstract.BasePageActivity
 import bootcamp.sparta.myapplemarket.data.model.Product
@@ -66,6 +65,17 @@ class DetailPageActivity : BasePageActivity() {
             it.title=""
             it.setHomeAsUpIndicator(R.drawable.back_arrow)
         }
+    }
+
+    // 툴바 뒤로가기버튼처리
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setViewValue() {
