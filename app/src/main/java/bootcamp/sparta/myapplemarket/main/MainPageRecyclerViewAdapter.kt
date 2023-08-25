@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.myapplemarket.R
 import bootcamp.sparta.myapplemarket.data.model.Product
 import bootcamp.sparta.myapplemarket.databinding.MainItemRecyclerviewBinding
+import java.lang.StringBuilder
 
 class MainPageRecyclerViewAdapter : RecyclerView.Adapter<MainPageRecyclerViewAdapter.Holder>(){
     private val mListData : MutableList<Product> = mutableListOf()
@@ -49,9 +50,32 @@ class MainPageRecyclerViewAdapter : RecyclerView.Adapter<MainPageRecyclerViewAda
             image.setImageResource(data.image)
             title.text = data.title
             location.text = data.location
-            price.text = data.price
+            price.text = setComma(data.price)
             chat.text = data.chat
             like.text = data.like.toString()
+        }
+
+        // 가격표에 콤마 추가
+        private fun setComma(data: String): String {
+            val length = data.length
+            // 콤마 개수
+            val commaSize : Int = length / 4
+
+            if(commaSize == 0) {
+                return data
+            }
+
+            // 콤마 포지션 구하기
+            var position = length - 3
+            val price = StringBuilder(data)
+
+            // 금액에 들어가야할 콤마개수만큼 콤마추가
+            for(i in 0 until commaSize) {
+                price.insert(position, ',')
+                position -= 3
+            }
+
+            return price.toString()
         }
     }
 
