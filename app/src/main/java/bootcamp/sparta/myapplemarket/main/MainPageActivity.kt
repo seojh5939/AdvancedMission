@@ -36,7 +36,9 @@ class MainPageActivity : BasePageActivity() {
         initView()
         initSpinner()
         initRecyclerView()
+        initNotification()
     }
+
 
     // Main화면에서 Back Button 클릭시 처리
     override fun onBackPressed() {
@@ -75,4 +77,11 @@ class MainPageActivity : BasePageActivity() {
         recyclerview.addItemDecoration(divider)
         recyclerview.adapter = adapter
     }
+
+    private fun initNotification() {
+        notificationButton.setOnClickListener {
+            notification(getString(R.string.notification_title), getString(R.string.notification_content))
+        }
+    }
+
 }

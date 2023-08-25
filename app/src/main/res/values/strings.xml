@@ -13,4 +13,7 @@
     <string name="exit_dialog_positive">확인</string>
     <string name="exit_dialog_negativie">취소</string>
 
+    <string name="notification_title">키워드 알림</string>
+    <string name="notification_content">설정한 키워드에 대한 알림이 도착했습니다. 어서 확인해보세요!!</string>
+
 </resources>
