@@ -37,6 +37,7 @@ class MainPageRecyclerViewAdapter : RecyclerView.Adapter<MainPageRecyclerViewAda
 
         private fun initView() {
             image = binding.itemMainImage
+            image.clipToOutline = true
             title = binding.itemMainTitle
             location = binding.itemMainLocation
             price = binding.itemMainPrice
