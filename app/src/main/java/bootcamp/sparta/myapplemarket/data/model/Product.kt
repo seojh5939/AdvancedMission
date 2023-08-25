@@ -1,6 +1,10 @@
 package bootcamp.sparta.myapplemarket.data.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 // 제품 Model Class
+@Parcelize
 data class Product(
     val id: Int, // id(like PK)
     val image: Int, // 제품 이미지
@@ -11,4 +15,4 @@ data class Product(
     val price: String, // 가격
     val chat: String, // 채팅개수
     val like: Int, // 좋아요 수
-)
+) : Parcelable

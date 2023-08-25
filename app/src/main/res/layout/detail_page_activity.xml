@@ -23,14 +23,13 @@
             <ImageView
                 android:id="@+id/detail_image"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="300dp"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/sample_1"
                 app:layout_constraintBottom_toTopOf="@+id/detail_contents_constraintlayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_weight="1" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/detail_contents_constraintlayout"
@@ -38,8 +37,7 @@
                 android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detail_image"
-                app:layout_constraintVertical_weight="2">
+                app:layout_constraintTop_toBottomOf="@+id/detail_image">
 
                 <ImageView
                     android:id="@+id/detail_profile_circle"
@@ -156,20 +154,22 @@
 
     <ImageButton
         android:id="@+id/detail_like"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="@dimen/margin_20"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="10dp"
         android:background="@color/transparent"
         android:scaleType="centerCrop"
         android:src="@drawable/icon_like"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="like버튼" />
 
     <View
         android:id="@+id/detail_bottom_vertical_line"
         android:layout_width="1dp"
         android:layout_height="40dp"
-        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginStart="@dimen/margin_8"
         android:background="@color/whiteGray"
         app:layout_constraintBottom_toBottomOf="@+id/detail_like"
         app:layout_constraintStart_toEndOf="@+id/detail_like"
@@ -190,7 +190,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/detail_button_chat"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="@dimen/margin_20"
         android:background="@drawable/rounded_button"
         android:text="채팅하기"
