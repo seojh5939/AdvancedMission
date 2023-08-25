@@ -16,9 +16,11 @@
     <dimen name="price_textSize">18sp</dimen>
     <dimen name="text_margin">8dp</dimen>
 
-    <dimen name="icon_size">40dp</dimen>
+    <dimen name="icon_button_width">50dp</dimen>
+    <dimen name="icon_button_height">40dp</dimen>
+    <dimen name="icon_size">17dp</dimen>
     <dimen name="icon_manner_size">35dp</dimen>
     <dimen name="icon_padding">5dp</dimen>
-    <dimen name="icon_num_size">11sp</dimen>
+    <dimen name="icon_num_size">13sp</dimen>
 
 </resources>
