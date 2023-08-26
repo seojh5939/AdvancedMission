@@ -3,6 +3,7 @@ package bootcamp.sparta.myapplemarket.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -59,7 +60,7 @@ class MainPageActivity : BasePageActivity() {
             }
         }
 
-        exitDialog(positive)
+        exitDialog("종료", "종료하시겠습니까?", positiveButton = positive)
     }
 
     override fun initView() {
@@ -86,7 +87,8 @@ class MainPageActivity : BasePageActivity() {
         recyclerviewItemList.addAll(getDummyData())
 
         val itemClickEvent = recyclerViewItemClickListener()
-        val adapter = MainPageRecyclerViewAdapter(recyclerviewItemList, itemClickEvent)
+        val itemLongClickEvent = recyclerViewItemLongClickListener()
+        val adapter = MainPageRecyclerViewAdapter(recyclerviewItemList, itemClickEvent, itemLongClickEvent)
         val divider = DividerItemDecoration(this, VERTICAL)
         recyclerview.addItemDecoration(divider)
 
@@ -101,6 +103,22 @@ class MainPageActivity : BasePageActivity() {
                 val intent = DetailPageActivity.newIntnet(this@MainPageActivity)
                 intent.putExtra(getString(R.string.intent_key_product), item)
                 startActivity(intent)
+            }
+        }
+    }
+
+    // 아이템 삭제
+    private fun recyclerViewItemLongClickListener(): MainPageRecyclerViewAdapter.onRecyclerViewItemLongClickListener{
+        return object : MainPageRecyclerViewAdapter.onRecyclerViewItemLongClickListener {
+            override fun onItemLongClick(view: View, position: Int) {
+                // 다이얼로그 클릭시 item 삭제
+                val positive = object : dialogButtonClicked {
+                    override fun onPositiveButtonClick() {
+                        recyclerviewItemList.removeAt(position)
+                        recyclerview.adapter?.notifyItemRemoved(position)
+                    }
+                }
+                exitDialog("삭제", "선택한 아이템을 삭제하시겠습니까?", R.drawable.manner_icon, positive)
             }
         }
     }
