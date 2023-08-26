@@ -15,4 +15,5 @@ data class Product(
     val price: String, // 가격
     val chat: String, // 채팅개수
     val like: Int, // 좋아요 수
+    val isLike: Boolean // 좋아요 클릭여부
 ) : Parcelable
