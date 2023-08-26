@@ -39,4 +39,17 @@
         app:layout_constraintTop_toBottomOf="@+id/main_spinner"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/main_fab"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        style="@style/fab1"
+        android:backgroundTint="@color/transparent"
+        app:backgroundTint="@color/transparent"
+        app:fabSize="mini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="30dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
