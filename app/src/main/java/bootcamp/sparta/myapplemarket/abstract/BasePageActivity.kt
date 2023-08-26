@@ -25,8 +25,8 @@ abstract class BasePageActivity : AppCompatActivity(){
     fun likeSnackBar(view: View, msg: String = getString(R.string.snakbar_msg)) =
         Snackbar.make(view, msg, Snackbar.LENGTH_SHORT)
 
-    fun exitDialog(positiveButton: dialogButtonClicked) {
-        val dialog = ExitDialog(positiveButton, "종료", "종료 하시겠습니까?", R.drawable.icon_chat)
+    fun exitDialog(title: String, message: String, icon: Int = R.drawable.icon_chat, positiveButton: dialogButtonClicked) {
+        val dialog = ExitDialog(positiveButton, title, message, icon)
         dialog.isCancelable = false
         dialog.show(this.supportFragmentManager, "ExitDialog")
     }
