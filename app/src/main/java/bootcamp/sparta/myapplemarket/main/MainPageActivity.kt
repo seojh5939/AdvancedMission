@@ -45,7 +45,9 @@ class MainPageActivity : BasePageActivity() {
         initRecyclerView()
         addRecyclerViewScrollListener()
         initNotification()
+        setFabClickListener()
     }
+
 
 
     // Main화면에서 Back Button 클릭시 처리
@@ -91,6 +93,19 @@ class MainPageActivity : BasePageActivity() {
         recyclerview.adapter = adapter
     }
 
+    // 리사이클러뷰 아이템 클릭시 DetailPage로 데이터 넘기면서 이동
+    private fun recyclerViewItemClickListener() : onRecyclerViewItemClickListener{
+        return object : onRecyclerViewItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
+                val item = recyclerviewItemList[position]
+                val intent = DetailPageActivity.newIntnet(this@MainPageActivity)
+                intent.putExtra(getString(R.string.intent_key_product), item)
+                startActivity(intent)
+            }
+        }
+    }
+
+    // 리사이클러뷰 스크롤시 fab버튼 보이거나 사라지도록 구현
     private fun addRecyclerViewScrollListener() {
         val listener = object : View.OnScrollChangeListener {
             val fadeOut = AnimationUtils.loadAnimation(applicationContext, androidx.appcompat.R.anim.abc_fade_out)
@@ -103,6 +118,7 @@ class MainPageActivity : BasePageActivity() {
                         fab.visibility = View.INVISIBLE
                         fab.startAnimation(fadeOut)
                     }
+                    // 그 외 경우 보이도록
                 } else {
 
                     if(!checkFabVisibility()) {
@@ -112,28 +128,25 @@ class MainPageActivity : BasePageActivity() {
                 }
             }
         }
-
         recyclerview.setOnScrollChangeListener(listener)
     }
 
+    // fab의 현재 visibility 상태체크
     private fun checkFabVisibility() : Boolean {
         return fab.visibility == View.VISIBLE
     }
 
+    // 알람기능
     private fun initNotification() {
         notificationButton.setOnClickListener {
             notification(getString(R.string.notification_title), getString(R.string.notification_content))
         }
     }
 
-    private fun recyclerViewItemClickListener() : onRecyclerViewItemClickListener{
-        return object : onRecyclerViewItemClickListener {
-            override fun onItemClick(view: View, position: Int) {
-                val item = recyclerviewItemList[position]
-                val intent = DetailPageActivity.newIntnet(this@MainPageActivity)
-                intent.putExtra(getString(R.string.intent_key_product), item)
-                startActivity(intent)
-            }
+    // fab버튼 클릭시 최상단으로 이동
+    private fun setFabClickListener() {
+        fab.setOnClickListener {
+            recyclerview.smoothScrollToPosition(0)
         }
     }
 
