@@ -44,6 +44,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         style="@style/fab1"
+        android:visibility="invisible"
         android:backgroundTint="@color/transparent"
         app:backgroundTint="@color/transparent"
         app:fabSize="mini"
