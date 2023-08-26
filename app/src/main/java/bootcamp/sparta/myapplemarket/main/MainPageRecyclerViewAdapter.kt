@@ -32,15 +32,13 @@ class MainPageRecyclerViewAdapter(
         mListData = listData
     }
 
-    class Holder(private val binding: MainItemRecyclerviewBinding, private val onItemClick: onRecyclerViewItemClickListener? = null) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+    class Holder(private val binding: MainItemRecyclerviewBinding, private val onItemClick: onRecyclerViewItemClickListener? = null, private val onItemLongClick: onRecyclerViewItemLongClickListener? = null) : RecyclerView.ViewHolder(binding.root), View.OnClickListener, View.OnLongClickListener {
         private lateinit var image: ImageView
         private lateinit var title: TextView
         private lateinit var location: TextView
         private lateinit var price: TextView
         private lateinit var chat: Button
         private lateinit var like: Button
-
-        private lateinit var mOnItemClick : onRecyclerViewItemClickListener
 
         init {
             initView()
@@ -65,13 +63,20 @@ class MainPageRecyclerViewAdapter(
             like.text = data.like.toString()
 
             itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener(this)
         }
 
         override fun onClick(p0: View?) {
             onItemClick?.let{
-                mOnItemClick = onItemClick
-                onItemClick.onItemClick(p0!!, layoutPosition)
+                it.onItemClick(p0!!, layoutPosition)
             }
+        }
+
+        override fun onLongClick(p0: View?): Boolean {
+            onItemLongClick?.let {
+                it.onItemLongClick(p0!!, layoutPosition)
+            }
+            return false
         }
     }
 
@@ -81,7 +86,7 @@ class MainPageRecyclerViewAdapter(
     ): MainPageRecyclerViewAdapter.Holder {
         val bind =
             MainItemRecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(bind, onItemClickEventListener)
+        return Holder(bind, onItemClickEventListener, onItemLongClickEventListener)
     }
 
     override fun onBindViewHolder(holder: MainPageRecyclerViewAdapter.Holder, position: Int) {
