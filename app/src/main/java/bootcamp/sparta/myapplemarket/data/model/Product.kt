@@ -1,6 +1,7 @@
 package bootcamp.sparta.myapplemarket.data.model
 
 import android.os.Parcelable
+import bootcamp.sparta.myapplemarket.R
 import kotlinx.parcelize.Parcelize
 
 // 제품 Model Class
@@ -14,6 +15,7 @@ data class Product(
     val location: String, // 지역
     val price: String, // 가격
     val chat: String, // 채팅개수
+    var likeIcon: Int = R.drawable.icon_like, // 좋아요 아이콘
     var like: Int, // 좋아요 수
     var isLike: Boolean = false // 좋아요 클릭여부
 ) : Parcelable
