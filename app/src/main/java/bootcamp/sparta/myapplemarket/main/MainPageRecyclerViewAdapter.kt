@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.myapplemarket.data.model.Product
 import bootcamp.sparta.myapplemarket.databinding.MainItemRecyclerviewBinding
+import bootcamp.sparta.myapplemarket.abstract.onRecyclerViewItemClickListener
+import bootcamp.sparta.myapplemarket.abstract.onRecyclerViewItemLongClickListener
 import bootcamp.sparta.myapplemarket.util.setComma
 
 
@@ -17,14 +19,6 @@ class MainPageRecyclerViewAdapter(
     val onItemClickEventListener: onRecyclerViewItemClickListener? = null,
     val onItemLongClickEventListener: onRecyclerViewItemLongClickListener? = null
 ) : RecyclerView.Adapter<MainPageRecyclerViewAdapter.Holder>() {
-
-    interface onRecyclerViewItemClickListener {
-        fun onItemClick(view: View, position: Int)
-    }
-
-    interface onRecyclerViewItemLongClickListener {
-        fun onItemLongClick(view: View, position: Int)
-    }
 
     private val mListData: MutableList<Product>
 
@@ -61,21 +55,30 @@ class MainPageRecyclerViewAdapter(
             price.text = setComma(data.price) + "원"
             chat.text = data.chat
             like.text = data.like.toString()
+            changeLikeIconDrawable(data.likeIcon)
+            setItemClickListener(itemView)
+        }
 
+        // 좋아요 아이콘 drawable 변경
+        private fun changeLikeIconDrawable(icon: Int) {
+            like.setCompoundDrawablesWithIntrinsicBounds(null, null, itemView.resources.getDrawable(icon, null), null)
+        }
+
+        private fun setItemClickListener(itemView: View) {
+            // item Click
             itemView.setOnClickListener(this)
+            // 좋아요 Click
+            like.setOnClickListener(this)
+            // item LongClick
             itemView.setOnLongClickListener(this)
         }
 
         override fun onClick(p0: View?) {
-            onItemClick?.let{
-                it.onItemClick(p0!!, layoutPosition)
-            }
+            onItemClick?.onItemClick(p0!!, layoutPosition)
         }
 
         override fun onLongClick(p0: View?): Boolean {
-            onItemLongClick?.let {
-                it.onItemLongClick(p0!!, layoutPosition)
-            }
+            onItemLongClick?.onItemLongClick(p0!!, layoutPosition)
             return false
         }
     }
