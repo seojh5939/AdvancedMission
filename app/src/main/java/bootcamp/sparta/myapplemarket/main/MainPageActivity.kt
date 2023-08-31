@@ -3,9 +3,7 @@ package bootcamp.sparta.myapplemarket.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
@@ -16,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import bootcamp.sparta.myapplemarket.R
 import bootcamp.sparta.myapplemarket.abstract.BasePageActivity
 import bootcamp.sparta.myapplemarket.abstract.dialogButtonClicked
-import bootcamp.sparta.myapplemarket.data.getDummyData
-import bootcamp.sparta.myapplemarket.data.model.Product
+import bootcamp.sparta.myapplemarket.data.ProductsItemData
 import bootcamp.sparta.myapplemarket.databinding.MainPageActivityBinding
 import bootcamp.sparta.myapplemarket.detail.DetailPageActivity
-import bootcamp.sparta.myapplemarket.main.MainPageRecyclerViewAdapter.onRecyclerViewItemClickListener
+import bootcamp.sparta.myapplemarket.abstract.onRecyclerViewItemClickListener
+import bootcamp.sparta.myapplemarket.abstract.onRecyclerViewItemLongClickListener
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainPageActivity : BasePageActivity() {
@@ -30,7 +28,7 @@ class MainPageActivity : BasePageActivity() {
     private lateinit var recyclerview: RecyclerView
     private lateinit var fab: FloatingActionButton
     private val spinnerItemList: MutableList<String> = mutableListOf()
-    private val recyclerviewItemList : MutableList<Product> = mutableListOf()
+//    private val recyclerviewItemList : MutableList<Product> = ProductsItemData.getProducts()
 
     companion object {
         fun newIntent(context: Context): Intent = Intent(context, MainPageActivity::class.java)
@@ -49,11 +47,21 @@ class MainPageActivity : BasePageActivity() {
         setFabClickListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getIntentItemId()
+    }
 
+    // DetailPage에서 받은 Position Refresh
+    private fun getIntentItemId() {
+        val result = intent.getIntExtra("intent_position", -1)
+        if(result != -1) {
+            recyclerview.adapter?.notifyItemChanged(result)
+        }
+    }
 
     // Main화면에서 Back Button 클릭시 처리
     override fun onBackPressed() {
-//        super.onBackPressed()
         val positive = object : dialogButtonClicked {
             override fun onPositiveButtonClick() {
                 finish()
@@ -84,11 +92,9 @@ class MainPageActivity : BasePageActivity() {
     }
 
     private fun initRecyclerView() {
-        recyclerviewItemList.addAll(getDummyData())
-
         val itemClickEvent = recyclerViewItemClickListener()
         val itemLongClickEvent = recyclerViewItemLongClickListener()
-        val adapter = MainPageRecyclerViewAdapter(recyclerviewItemList, itemClickEvent, itemLongClickEvent)
+        val adapter = MainPageRecyclerViewAdapter(ProductsItemData.getProducts(), itemClickEvent, itemLongClickEvent)
         val divider = DividerItemDecoration(this, VERTICAL)
         recyclerview.addItemDecoration(divider)
 
@@ -96,25 +102,46 @@ class MainPageActivity : BasePageActivity() {
     }
 
     // 리사이클러뷰 아이템 클릭시 DetailPage로 데이터 넘기면서 이동
-    private fun recyclerViewItemClickListener() : onRecyclerViewItemClickListener{
+    private fun recyclerViewItemClickListener() : onRecyclerViewItemClickListener {
         return object : onRecyclerViewItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                val item = recyclerviewItemList[position]
-                val intent = DetailPageActivity.newIntnet(this@MainPageActivity)
-                intent.putExtra(getString(R.string.intent_key_product), item)
-                startActivity(intent)
+                when(view.id) {
+                    R.id.item_main_layout -> itemViewClicked(position)
+                    R.id.item_main_icon_like -> likeBtnClicked(position)
+                }
             }
         }
     }
 
+    private fun itemViewClicked(position: Int) {
+        val item = ProductsItemData.getProducts()[position]
+        val intent = DetailPageActivity.newIntnet(this@MainPageActivity)
+        intent.putExtra(getString(R.string.intent_key_product), item)
+        startActivity(intent)
+    }
+
+    private fun likeBtnClicked(position: Int) {
+        val item = ProductsItemData.getProducts()[position]
+        item.isLike = !item.isLike
+        if(item.isLike){
+            item.likeIcon = R.drawable.icon_like_fill
+            item.like += 1
+            recyclerview.adapter?.notifyItemChanged(position)
+        } else {
+            item.likeIcon = R.drawable.icon_like
+            item.like -= 1
+            recyclerview.adapter?.notifyItemChanged(position)
+        }
+    }
+
     // 아이템 삭제
-    private fun recyclerViewItemLongClickListener(): MainPageRecyclerViewAdapter.onRecyclerViewItemLongClickListener{
-        return object : MainPageRecyclerViewAdapter.onRecyclerViewItemLongClickListener {
+    private fun recyclerViewItemLongClickListener(): onRecyclerViewItemLongClickListener {
+        return object : onRecyclerViewItemLongClickListener {
             override fun onItemLongClick(view: View, position: Int) {
                 // 다이얼로그 클릭시 item 삭제
                 val positive = object : dialogButtonClicked {
                     override fun onPositiveButtonClick() {
-                        recyclerviewItemList.removeAt(position)
+                        ProductsItemData.getProducts().removeAt(position)
                         recyclerview.adapter?.notifyItemRemoved(position)
                     }
                 }
