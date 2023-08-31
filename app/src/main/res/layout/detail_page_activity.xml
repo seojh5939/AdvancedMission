@@ -6,4 +6,198 @@
     android:layout_height="match_parent"
     tools:context=".detail.DetailPageActivity">
 
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detail_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/detail_button_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/detail_image"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/sample_1"
+                app:layout_constraintBottom_toTopOf="@+id/detail_contents_constraintlayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detail_contents_constraintlayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_image">
+
+                <ImageView
+                    android:id="@+id/detail_profile_circle"
+                    android:layout_width="@dimen/profile_circle_size"
+                    android:layout_height="@dimen/profile_circle_size"
+                    android:layout_margin="@dimen/margin_15"
+                    android:src="@drawable/user_profile_shape"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_userid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginBottom="@dimen/margin_8"
+                    tools:text="난쉽"
+                    android:textSize="@dimen/title_textSize"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/detail_profile_circle"
+                    app:layout_constraintTop_toTopOf="@+id/detail_profile_circle" />
+
+                <TextView
+                    android:id="@+id/detail_user_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_8"
+                    tools:text="동래구 온천제2동"
+                    android:textSize="@dimen/location_textSize"
+                    app:layout_constraintBottom_toBottomOf="@+id/detail_profile_circle"
+                    app:layout_constraintStart_toEndOf="@+id/detail_profile_circle"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_userid" />
+
+                <ImageView
+                    android:id="@+id/detail_icon_manner"
+                    android:layout_width="@dimen/icon_manner_size"
+                    android:layout_height="@dimen/icon_manner_size"
+                    android:layout_margin="@dimen/margin_15"
+                    android:src="@drawable/manner_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_tv_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    tools:text="39.3°C"
+                    android:textColor="@color/deepGreen"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/detail_icon_manner"
+                    app:layout_constraintEnd_toStartOf="@+id/detail_icon_manner"
+                    app:layout_constraintTop_toTopOf="@+id/detail_icon_manner" />
+
+                <TextView
+                    android:id="@+id/detail_tv_manner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/detail_manner"
+                    android:textColor="@color/lightGray"
+                    app:layout_constraintEnd_toEndOf="@+id/detail_icon_manner"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_icon_manner" />
+
+                <View
+                    android:id="@+id/detail_middle_horizontal_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@color/whiteGray"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_tv_manner" />
+
+                <TextView
+                    android:id="@+id/detail_board_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    tools:text="샤넬 탑핸들 가방"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_middle_horizontal_line" />
+
+                <TextView
+                    android:id="@+id/detail_board_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_board_title"
+                    tools:text="샤넬 트랜디 CC 탑핸들 스몰 램스킨 블랙 금장 플랩백! \n 색상: 블랙\n사이즈:25.5cm * 17.5cm * 8cm\n 구성: 본품, 더스트 \n\n 급하게 돈이 필요해서 팝니다 ㅠㅠ...샤넬 트랜디 CC 탑핸들 스몰 램스킨 블랙 금장 플랩백! \n 색상: 블랙\n사이즈:25.5cm * 17.5cm * 8cm\n 구성: 본품, 더스트 \n\n 급하게 돈이 필요해서 팝니다 ㅠㅠ...샤넬 트랜디 CC 탑핸들 스몰 램스킨 블랙 금장 플랩백! \n 색상: 블랙\n사이즈:25.5cm * 17.5cm * 8cm\n 구성: 본품, 더스트 \n\n 급하게 돈이 필요해서 팝니다 ㅠㅠ..." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/detail_like"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="@dimen/margin_8"
+        android:padding="10dp"
+        android:background="@color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/icon_like"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="like버튼" />
+
+    <View
+        android:id="@+id/detail_bottom_vertical_line"
+        android:layout_width="1dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/margin_8"
+        android:background="@color/whiteGray"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_like"
+        app:layout_constraintStart_toEndOf="@+id/detail_like"
+        app:layout_constraintTop_toTopOf="@+id/detail_like" />
+
+    <TextView
+        android:id="@+id/detail_tv_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_20"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_like"
+        app:layout_constraintStart_toEndOf="@+id/detail_bottom_vertical_line"
+        app:layout_constraintTop_toTopOf="@+id/detail_like"
+        tools:text="180,000원" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/detail_button_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:background="@drawable/rounded_button"
+        android:text="채팅하기"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_like"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/detail_like" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

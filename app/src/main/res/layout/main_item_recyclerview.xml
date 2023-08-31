@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_main_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/layout_item_margin">
+
+    <ImageView
+        android:id="@+id/item_main_image"
+        android:layout_width="@dimen/thumb_image_size"
+        android:layout_height="@dimen/thumb_image_size"
+        android:scaleType="centerCrop"
+        android:background="@drawable/rv_item_image_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@color/black" />
+
+    <TextView
+        android:id="@+id/item_main_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:textSize="@dimen/title_textSize"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintStart_toEndOf="@id/item_main_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/item_main_image"
+        tools:text="울산 동해오션뷰 60평 복층 펜트하우스 1일 숙박권 펜션 힐링 숙소 별장" />
+
+    <TextView
+        android:id="@+id/item_main_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/deepGray"
+        android:textSize="@dimen/location_textSize"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="@+id/item_main_title"
+        app:layout_constraintEnd_toEndOf="@+id/item_main_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_main_title"
+        tools:text="수원시 영통구 원천동" />
+
+    <TextView
+        android:id="@+id/item_main_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/price_textSize"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="@+id/item_main_title"
+        app:layout_constraintEnd_toStartOf="@+id/item_main_icon_chat"
+        app:layout_constraintTop_toBottomOf="@+id/item_main_location"
+        tools:text="50,000원" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/item_main_icon_chat"
+        android:layout_width="@dimen/icon_button_width"
+        android:layout_height="@dimen/icon_button_height"
+        android:background="@color/transparent"
+        android:clickable="false"
+        android:drawableStart="@drawable/icon_chat"
+        android:padding="@dimen/icon_padding"
+        android:textSize="@dimen/icon_num_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/item_main_icon_like"
+        tools:text="i6" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/item_main_icon_like"
+        android:layout_width="@dimen/icon_button_width"
+        android:layout_height="@dimen/icon_button_height"
+        android:background="@color/transparent"
+        android:drawableStart="@drawable/icon_like"
+        android:padding="@dimen/icon_padding"
+        android:textSize="@dimen/icon_num_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="25" />
+</androidx.constraintlayout.widget.ConstraintLayout>
